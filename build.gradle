@@ -10,9 +10,14 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'war'
+
+war {
+    baseName = 'springmvc'
+}
 
 jar {
-    baseName = 'gs-serving-web-content'
+    baseName = 'springmvc'
     version =  '0.1.0'
 }
 
@@ -23,9 +28,17 @@ repositories {
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+configurations {
+    providedRuntime
+}
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-starter-web")
+
     testCompile("junit:junit")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
 }
 
 task wrapper(type: Wrapper) {
