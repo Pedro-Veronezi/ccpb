@@ -74,5 +74,6 @@
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-tx:4.2.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.springframework:spring-core:4.2.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="jquery-2.1.1" level="application" />
   </component>
 </module>
