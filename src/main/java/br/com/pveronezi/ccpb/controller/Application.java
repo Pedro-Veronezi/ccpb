@@ -16,6 +16,7 @@ public class Application  extends SpringBootServletInitializer implements Comman
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        System.out.println("-------------configure-------------");
         return application.sources(Application.class);
     }
     public static void main(String[] args) {
