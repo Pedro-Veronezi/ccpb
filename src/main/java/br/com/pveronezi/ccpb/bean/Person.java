@@ -5,12 +5,17 @@ package br.com.pveronezi.ccpb.bean;
  */
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Person {
     @Id
     private String id;
 
     private String name;
+
+
+    public Person() { }
 
     public Person(String name) {
         this.name = name;
@@ -30,5 +35,13 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

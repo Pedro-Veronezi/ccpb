@@ -35,7 +35,7 @@ configurations {
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-starter-web")
-    compile 'org.springframework.data:spring-data-mongodb:1.8.1.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb:+'
 
     testCompile("junit:junit")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
@@ -45,3 +45,4 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+23
