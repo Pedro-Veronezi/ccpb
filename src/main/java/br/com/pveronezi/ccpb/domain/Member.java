@@ -14,10 +14,15 @@ public class Member {
 
     private String name;
 
+    private Address address;
 
-    public Member() { }
+    public Member() {
+        address = new Address();
+    }
 
-    public Member(String name) {
+    public Member(String name)
+    {
+        this();
         this.name = name;
     }
 
@@ -35,6 +40,14 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

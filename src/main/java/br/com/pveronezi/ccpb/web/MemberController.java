@@ -71,6 +71,7 @@ public class MemberController {
         }
         memberService.update(member);
 
+        // todo verificar se precisa dessa linha mesmo chamando o redirect
         model.addAttribute("members", memberService.getAll());
 
         return "redirect:/";
@@ -97,6 +98,7 @@ public class MemberController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String removeMember(@PathVariable("id") String memberId, Model model) {
         System.out.println("removeMember - start");
+        //todo simplificar para o service receber o id para remover.
         Member member = memberService.get(memberId);
         memberService.delete(member);
         return "redirect:/";

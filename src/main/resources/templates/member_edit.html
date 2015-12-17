@@ -19,6 +19,8 @@
             <tbody>
             <tr><td><input type="text" hidden="hidden" th:field="*{id}" th:value="1234"/></td><td></td></tr>
             <tr><td >Member Name</td> <td><input type="text" th:field="*{name}"/></td></tr>
+            <tr><td >Member Name</td> <td><input type="text" th:field="*{address.street}"/></td></tr>
+            <tr><td >Member Name</td> <td><input type="text" th:field="*{address.number}"/></td></tr>
             <tr>
                 <td>
                     <button type="submit" class="btn btn-success btn-sm" name="action" value="save" >Save</button>

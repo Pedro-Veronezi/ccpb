@@ -14,12 +14,16 @@
         <tr>
             <th scope="col" >Id</th>
             <th scope="col" >Nome</th>
+            <th scope="col" >Rua</th>
+            <th scope="col" >Numero</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="member : ${members}">
             <td th:text="${member.id}">Id</td>
-            <td th:text="${member.name}">Name</td>
+            <td th:text="${member.name}">Nome</td>
+            <td th:text="${member.address.street}">Rua</td>
+            <td th:text="${member.address.number}">Numero</td>
 
             <td> <a class="btn btn-primary btn-sm"  th:href="@{edit/} + ${member.id}" >Editar</a>
                 <a class="btn btn-primary btn-sm"  th:href="@{delete/} + ${member.id}" >Remover</a>
