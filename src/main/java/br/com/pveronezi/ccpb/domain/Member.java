@@ -1,4 +1,4 @@
-package br.com.pveronezi.ccpb.bean;
+package br.com.pveronezi.ccpb.domain;
 
 /**
  * Created by pveronezi on 19/11/15.
@@ -8,16 +8,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Person {
+public class Member {
     @Id
     private String id;
 
     private String name;
 
 
-    public Person() { }
+    public Member() { }
 
-    public Person(String name) {
+    public Member(String name) {
         this.name = name;
     }
 
@@ -39,7 +39,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "Member{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 '}';
