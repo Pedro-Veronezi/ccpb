@@ -44,7 +44,7 @@ public class MemberController {
     @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String createMemberView(Model model) {
         System.out.println("createMemberView - start");
-        model.addAttribute(new Member());
+        model.addAttribute(new Member.Builder().build());
 
         return "member_edit";
     }
