@@ -50,11 +50,4 @@ public class Member {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
