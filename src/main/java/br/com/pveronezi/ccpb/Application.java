@@ -1,6 +1,5 @@
 package br.com.pveronezi.ccpb;
 
-import br.com.pveronezi.ccpb.domain.Address;
 import br.com.pveronezi.ccpb.domain.Member;
 import br.com.pveronezi.ccpb.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +34,14 @@ public class Application extends SpringBootServletInitializer implements Command
         memberService.cleanDb();
         for (int i = 0; i < 10; i++) {
             Member m = new Member("Usuário " + i);
-            m.setAddress(new Address("Rua " + i, i * 3));
+
+
+
+
+            m.setAddress(new Builder().createAddress());
+
+
+
             memberService.insert(m);
         }
 
