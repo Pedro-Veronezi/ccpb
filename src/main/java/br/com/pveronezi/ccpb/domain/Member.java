@@ -29,6 +29,9 @@ public class Member {
     private Portfolio portfolio = new Portfolio.Builder().build();
     private Identification identification = new Identification.Builder().build();
 
+    public Member() {
+    }
+
     private Member(Builder builder) {
         id = builder.id;
         name = builder.name;

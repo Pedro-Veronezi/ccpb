@@ -9,6 +9,9 @@ public class PhoneNumber {
     private int extensionLine;
     private PhoneType type;
 
+    public PhoneNumber() {
+    }
+
     private PhoneNumber(Builder builder) {
         setNumber(builder.number);
         setDdd(builder.ddd);

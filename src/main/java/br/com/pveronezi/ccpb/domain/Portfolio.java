@@ -13,6 +13,9 @@ public class Portfolio {
     private VocationalAreaType vocationalArea;
     private String professional;
 
+    public Portfolio() {
+    }
+
     private Portfolio(Builder builder) {
         setParticipatedConhecendoComuna(builder.participatedConhecendoComuna);
         setBaptismDate(builder.baptismDate);

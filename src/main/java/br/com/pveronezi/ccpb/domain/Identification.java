@@ -11,6 +11,9 @@ public class Identification {
     private String matherName;
     private String fatherName;
 
+    public Identification() {
+    }
+
     private Identification(Builder builder) {
         setRg(builder.rg);
         setRgDispatcher(builder.rgDispatcher);
