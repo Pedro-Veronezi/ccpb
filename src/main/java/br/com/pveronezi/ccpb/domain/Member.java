@@ -4,6 +4,8 @@ package br.com.pveronezi.ccpb.domain;
  * Created by pveronezi on 19/11/15.
  */
 
+import br.com.pveronezi.ccpb.domain.enumeration.AdmittedType;
+import br.com.pveronezi.ccpb.domain.enumeration.FunctionType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,7 +17,7 @@ public class Member {
     private String id;
     private String name;
     private Calendar birthday;
-    private MatrialState matrialState;
+    private MaritalStatus maritalStatus;
     private Calendar dateAdmission;
     private AdmittedType admittedFor;
     private boolean baptized;
@@ -36,7 +38,7 @@ public class Member {
         id = builder.id;
         name = builder.name;
         birthday = builder.birthday;
-        matrialState = builder.matrialState;
+        maritalStatus = builder.maritalStatus;
         dateAdmission = builder.dateAdmission;
         admittedFor = builder.admittedFor;
         baptized = builder.baptized;
@@ -67,6 +69,10 @@ public class Member {
         this.name = name;
     }
 
+    public String getFormattedBirthday() {
+        return DomainUtil.getFormattedStringDate(birthday);
+
+    }
     public Calendar getBirthday() {
         return birthday;
     }
@@ -75,14 +81,18 @@ public class Member {
         this.birthday = birthday;
     }
 
-    public MatrialState getMatrialState() {
-        return matrialState;
+    public MaritalStatus getMaritalStatus() {
+        return maritalStatus;
     }
 
-    public void setMatrialState(MatrialState matrialState) {
-        this.matrialState = matrialState;
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
+    public String getFormattedDateAdmission() {
+        return DomainUtil.getFormattedStringDate(dateAdmission);
+
+    }
     public Calendar getDateAdmission() {
         return dateAdmission;
     }
@@ -183,7 +193,7 @@ public class Member {
         private String id;
         private String name;
         private Calendar birthday;
-        private MatrialState matrialState;
+        private MaritalStatus maritalStatus;
         private Calendar dateAdmission;
         private AdmittedType admittedFor;
         private boolean baptized;
@@ -215,8 +225,8 @@ public class Member {
             return this;
         }
 
-        public Builder matrialState(MatrialState val) {
-            matrialState = val;
+        public Builder maritalStatus(MaritalStatus val) {
+            maritalStatus = val;
             return this;
         }
 

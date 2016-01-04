@@ -14,15 +14,20 @@
         <tr>
             <th scope="col" >Nome</th>
             <th scope="col" >Valor</th>
+            <th scope="col" >Nome</th>
+            <th scope="col" >Valor</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="member : ${members}">
-        <tr><td >Id</td> <td th:text="${member.id}">Id</td></tr>
+
+        <tr>
+            <td >Id</td>
+            <td th:text="${member.id}">Id</td></tr>
         <tr><td >Name</td> <td th:text="${member.name}">Name</td></tr>
-        <tr><td >Nascimento</td> <td th:text="${member.birthday}">Nascimento</td></tr>
-        <tr><td >Estado civil</td> <td th:text="${member.matrimonialState}"></td></tr>
-        <tr><td >Data de admissão</td> <td th:text="${member.dateAdmission}"></td></tr>
+        <tr><td >Nascimento</td> <td th:text="${member.formattedBirthday}">Nascimento</td></tr>
+        <tr><td >Estado civil</td> <td th:text="${member.maritalStatus}"></td></tr>
+        <tr><td >Data de admissão</td> <td th:text="${member.formattedDateAdmission}"></td></tr>
         <tr><td >Admitido por</td> <td th:text="${member.admittedFor}"></td></tr>
         <tr><td >Batizado</td> <td th:text="${member.baptized}"></td></tr>
         <tr><td >Igreja de batismo</td> <td th:text="${member.churchBaptized}"></td></tr>
@@ -31,10 +36,9 @@
         <tr><td >Email</td> <td th:text="${member.email}"></td></tr>
         <tr><td >Foto</td> <td th:text="${member.photo}"></td></tr>
         <tr><td >Endereço</td> <td th:text="${member.address.street} + ', ' + ${member.address.number}"></td></tr>
-        <tr><td ></td> <td th:text="${member.}"></td></tr>
-        <tr><td ></td> <td th:text="${member.}"></td></tr>
-        <tr><td ></td> <td th:text="${member.}"></td></tr>
-        <tr><td ></td> <td th:text="${member.}"></td></tr>
+        <tr><td >Telefone</td> <td th:text="${member.phoneNumber.ddd} + ', ' + ${member.phoneNumber.number}"></td></tr>
+        <tr><td >Profissão</td> <td th:text="${member.portfolio.profession}"></td></tr>
+        <tr><td >RG</td> <td th:text="${member.identification.rg}"></td></tr>
 
 
             <td> <a class="btn btn-primary btn-sm"  th:href="@{edit/} + ${member.id}" >Editar</a>

@@ -1,5 +1,7 @@
 package br.com.pveronezi.ccpb.domain;
 
+import br.com.pveronezi.ccpb.domain.enumeration.VocationalAreaType;
+
 import java.util.Calendar;
 
 /**
@@ -11,7 +13,7 @@ public class Portfolio {
     private String historic;
     private TheologicalTrainingType theologicalTraining;
     private VocationalAreaType vocationalArea;
-    private String professional;
+    private String profession;
 
     public Portfolio() {
     }
@@ -22,7 +24,7 @@ public class Portfolio {
         setHistoric(builder.historic);
         setTheologicalTraining(builder.theologicalTraining);
         setVocationalArea(builder.vocationalArea);
-        setProfessional(builder.professional);
+        setProfession(builder.profession);
     }
 
     public boolean isParticipatedConhecendoComuna() {
@@ -65,12 +67,12 @@ public class Portfolio {
         this.vocationalArea = vocationalArea;
     }
 
-    public String getProfessional() {
-        return professional;
+    public String getProfession() {
+        return profession;
     }
 
-    public void setProfessional(String professional) {
-        this.professional = professional;
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
 
@@ -80,7 +82,7 @@ public class Portfolio {
         private String historic;
         private TheologicalTrainingType theologicalTraining;
         private VocationalAreaType vocationalArea;
-        private String professional;
+        private String profession;
 
         public Builder() {
         }
@@ -110,8 +112,8 @@ public class Portfolio {
             return this;
         }
 
-        public Builder professional(String val) {
-            professional = val;
+        public Builder profession(String val) {
+            profession = val;
             return this;
         }
 

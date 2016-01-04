@@ -1,5 +1,7 @@
 package br.com.pveronezi.ccpb.domain;
 
+import br.com.pveronezi.ccpb.domain.enumeration.PhoneType;
+
 /**
  * Created by pveronezi on 22/12/15.
  */

@@ -1,6 +1,10 @@
 package br.com.pveronezi.ccpb;
 
 import br.com.pveronezi.ccpb.domain.*;
+import br.com.pveronezi.ccpb.domain.enumeration.AdmittedType;
+import br.com.pveronezi.ccpb.domain.enumeration.FunctionType;
+import br.com.pveronezi.ccpb.domain.enumeration.PhoneType;
+import br.com.pveronezi.ccpb.domain.enumeration.VocationalAreaType;
 import br.com.pveronezi.ccpb.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -38,7 +42,7 @@ public class Application extends SpringBootServletInitializer implements Command
             Member m = new Member.Builder()
                     .name("name " + i)
                     .birthday(Calendar.getInstance())
-                    .matrialState(MatrialState.MERRIED)
+                    .maritalStatus(MaritalStatus.MERRIED)
                     .dateAdmission(Calendar.getInstance())
                     .admittedFor(AdmittedType.ACCLAIM)
                     .baptized(true)
@@ -69,7 +73,7 @@ public class Application extends SpringBootServletInitializer implements Command
                                             "asdfasdfsdfsadsfa asdf asdfs sdfgsdf rtyjetyco jhnkju ikuj hikjuhl kjhklj " +
                                             " asdf asdfadfsdfsdfassdfadferr d tdyhmety  hymnrg fgh dhgm dghmdhgnsd ")
                                     .participatedConhecendoComuna(i % 2 == 0 ? true : false)
-                                    .professional("Empresario")
+                                    .profession("Empresario")
                                     .theologicalTraining(TheologicalTrainingType.BACHELOR)
                                     .vocationalArea(VocationalAreaType.CHILD)
                                     .build()
