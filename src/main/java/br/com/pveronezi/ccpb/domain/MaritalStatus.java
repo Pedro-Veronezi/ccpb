@@ -12,8 +12,7 @@ public enum MaritalStatus {
         value = s;
     }
 
-    @Override
-    public String toString() {
+    public String getValue() {
         return value;
     }
 }

@@ -66,7 +66,10 @@ public class MemberController {
                                @RequestParam(value="action", required=true) String action) {
 
         System.out.println("updateMember POST - start");
+        System.out.println(member);
+
         if (bindingResult.hasErrors()) {
+            System.out.println("bindingResult.hasErrors");
             return "member_edit";
         }
         memberService.update(member);
@@ -85,6 +88,8 @@ public class MemberController {
                                @RequestParam(value="action", required=true) String action) {
 
         System.out.println("createMember POST - start");
+
+
         if (bindingResult.hasErrors()) {
             return "member_edit";
         }

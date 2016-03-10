@@ -3,32 +3,225 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title layout:fragment="title" >Edit</title>
+    <title layout:fragment="title">Edit</title>
 </head>
 <body>
 <div id="main" layout:fragment="content">
     <form th:object="${member}" method="post">
+        <ul th:if="${#fields.hasErrors('*')}">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+        </ul>
+        <br/>
+        <ul th:if="${#fields.hasErrors('global')}">
+            <li th:each="err : ${#fields.errors('global')}" th:text="${err}">Input is incorrect</li>
+        </ul>
         <table class="table table-striped table-bordered">
-            <caption class="text-center lead" >Member Edit</caption>
+            <caption class="text-center lead">Member Edit</caption>
             <thead>
             <tr>
-                <th >Field Name</th>
-                <th >Field Value</th>
+                <th>Field Name</th>
+                <th>Field Value</th>
             </tr>
             </thead>
             <tbody>
-            <tr><td><input type="text" hidden="hidden" th:field="*{id}" th:value="1234"/></td><td></td></tr>
-            <tr><td >Member Name</td> <td><input type="text" th:field="*{name}"/></td></tr>
-            <tr><td >Member Name</td> <td><input type="text" th:field="*{address.street}"/></td></tr>
-            <tr><td >Member Name</td> <td><input type="text" th:field="*{address.number}"/></td></tr>
             <tr>
-                <td>
-                    <button type="submit" class="btn btn-success btn-sm" name="action" value="save" >Save</button>
-                </td>
-                <td>
-                    <button type="submit" class="btn btn-default btn-sm" name="action" value="cancel" >Cancel</button>
+                <td class="title">Name:</td>
+                <td><input type="text" th:field="*{name}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Nascimento:</td>
+                <td><input type="date"
+                           th:field="*{birthday}"/>
                 </td>
             </tr>
+            <tr>
+                <td class="title">Estado civil:</td>
+                <td>
+                    <select th:field="*{maritalStatus}">
+                        <option th:each="status : ${T(br.com.pveronezi.ccpb.domain.MaritalStatus).values()}"
+                                th:value="${status}"
+                                th:text="${status.value}"
+                                th:selected="${status == T(br.com.pveronezi.ccpb.domain.MaritalStatus).SINGLE}"></option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr>
+                <td class="title">Data de admissão:</td>
+                <td><input type="date" th:field="*{dateAdmission}"/></td>
+            </tr>
+            <tr>
+
+                <td class="title">Admitido por:</td>
+                <td>
+                    <select th:field="*{admittedFor}">
+                    <option th:each="value : ${T(br.com.pveronezi.ccpb.domain.enumeration.AdmittedType).values()}"
+                            th:value="${value}"
+                            th:text="${value.value}"
+                            th:selected="${value == T(br.com.pveronezi.ccpb.domain.enumeration.AdmittedType).ACCLAIM}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">Batizado:</td>
+                <td><input type="checkbox" th:checked="*{baptized}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Igreja de batismo:</td>
+                <td><input type="text" th:field="*{churchBaptized}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Ultima igreja:</td>
+                <td><input type="text" th:field="*{lastChurch}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Função:</td>
+                <td>
+                    <select th:field="*{function}">
+                        <option th:each="value : ${T(br.com.pveronezi.ccpb.domain.enumeration.FunctionType).values()}"
+                                th:value="${value}"
+                                th:text="${value.value}"
+                                th:selected="${value == T(br.com.pveronezi.ccpb.domain.enumeration.FunctionType).DIAKONIA}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">Email:</td>
+                <td><input type="email" th:field="*{email}"/></td>
+            </tr>
+            <!--TODO resolver upload de foto-->
+            <!--<tr>
+                <td class="title">Foto:</td>
+                <td><input type="text" th:field="*{}"/></td>
+                <td th:text="${member.photo}"></td>
+            </tr>-->
+            <tr>
+                <td class="title">Endereço rua:</td>
+                <td><input type="text" th:field="*{address.street}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Endereço numero:</td>
+                <td><input type="number" th:field="*{address.number}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Endereço complemento:</td>
+                <td><input type="text" th:field="*{address.complement}"/></td>
+            </tr>
+
+            <tr>
+                <td class="title">Bairro:</td>
+                <td><input type="text" th:field="*{address.neghborhood}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Cidade:</td>
+                <td><input type="text" th:field="*{address.city}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Estado:</td>
+                <td><input type="text" th:field="*{address.state}"/></td>
+            </tr>
+            <tr>
+                <td class="title">CEP:</td>
+                <td><input type="number" th:field="*{address.zipCode}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Telefone numero:</td>
+                <td><input type="text" th:field="*{phoneNumber.number}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Telefone ddd:</td>
+                <td><input type="text" th:field="*{phoneNumber.ddd}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Telefone Ramal:</td>
+                <td><input type="text" th:field="*{phoneNumber.extensionLine}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Telefone Tipo:</td>
+                <td>
+                    <select th:field="*{phoneNumber.type}">
+                        <option th:each="value : ${T(br.com.pveronezi.ccpb.domain.enumeration.PhoneType).values()}"
+                                th:value="${value}"
+                                th:text="${value.value}"
+                                th:selected="${value == T(br.com.pveronezi.ccpb.domain.enumeration.PhoneType).RESIDENCIAL}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">Profissão:</td>
+                <td><input type="text" th:field="*{portfolio.profession}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Participou do Conhecendo a Comuna:</td>
+                <!--todo verificar se é necessário o atributo name-->
+                <td><input type="checkbox" name="active" th:checked="*{portfolio.participatedConhecendoComuna}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Data de Batismo:</td>
+                <td><input type="date" th:field="*{portfolio.baptismDate}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Historico:</td>
+                <td><input type="text" th:field="*{portfolio.historic}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Formação Teologica:</td>
+                <td>
+                    <select th:field="*{portfolio.theologicalTraining}">
+                        <option th:each="value : ${T(br.com.pveronezi.ccpb.domain.enumeration.TheologicalTrainingType).values()}"
+                                th:value="${value}"
+                                th:text="${value.value}"
+                                th:selected="${value == T(br.com.pveronezi.ccpb.domain.enumeration.TheologicalTrainingType).NO_FORMATION}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="title">Area de vocação:</td>
+                <td>
+                    <select th:field="*{portfolio.vocationalArea}">
+                        <option th:each="value : ${T(br.com.pveronezi.ccpb.domain.enumeration.VocationalAreaType).values()}"
+                                th:value="${value}"
+                                th:text="${value.value}"
+                                th:selected="${value == T(br.com.pveronezi.ccpb.domain.enumeration.VocationalAreaType).CHILD}"></option>
+                    </select>
+                </td>
+
+            </tr>
+            &lt;!&ndash;Identificação&ndash;&gt;
+            <tr>
+                <td class="title">RG numero:</td>
+                <td><input type="text" th:field="*{identification.rg}"/></td>
+            </tr>
+            <tr>
+                <td class="title">RG SSP:</td>
+                <td><input type="text" th:field="*{identification.rgDispatcher}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Natural de Cidade:</td>
+                <td><input type="text" th:field="*{identification.bornCity}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Natural de Estado:</td>
+                <td><input type="text" th:field="*{identification.bornState}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Nome do Pai:</td>
+                <td><input type="text" th:field="*{identification.fatherName}"/></td>
+            </tr>
+            <tr>
+                <td class="title">Nome da Mãe:</td>
+                <td><input type="text" th:field="*{identification.matherName}"/></td>
+            </tr>
+
+            <tr>
+                <td class="title">
+                    <button type="submit" class="btn btn-success btn-sm" name="action" value="save">Save</button>
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-default btn-sm" name="action" value="cancel">Cancel</button>
+                </td>
+            </tr>
+
             </tbody>
         </table>
     </form>

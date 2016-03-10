@@ -8,7 +8,9 @@ import br.com.pveronezi.ccpb.domain.enumeration.AdmittedType;
 import br.com.pveronezi.ccpb.domain.enumeration.FunctionType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 @Document
@@ -68,11 +70,6 @@ public class Member {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getFormattedBirthday() {
-        return DomainUtil.getFormattedStringDate(birthday);
-
-    }
     public Calendar getBirthday() {
         return birthday;
     }
@@ -89,10 +86,6 @@ public class Member {
         this.maritalStatus = maritalStatus;
     }
 
-    public String getFormattedDateAdmission() {
-        return DomainUtil.getFormattedStringDate(dateAdmission);
-
-    }
     public Calendar getDateAdmission() {
         return dateAdmission;
     }
@@ -293,5 +286,27 @@ public class Member {
         public Member build() {
             return new Member(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", birthday=" + birthday +
+                ", maritalStatus=" + maritalStatus +
+                ", dateAdmission=" + dateAdmission +
+                ", admittedFor=" + admittedFor +
+                ", baptized=" + baptized +
+                ", churchBaptized='" + churchBaptized + '\'' +
+                ", lastChurch='" + lastChurch + '\'' +
+                ", function=" + function +
+                ", email='" + email + '\'' +
+                ", photo=" + Arrays.toString(photo) +
+                ", address=" + address +
+                ", phoneNumber=" + phoneNumber +
+                ", portfolio=" + portfolio +
+                ", identification=" + identification +
+                '}';
     }
 }

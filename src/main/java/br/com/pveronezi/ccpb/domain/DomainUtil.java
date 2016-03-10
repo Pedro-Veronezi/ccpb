@@ -8,7 +8,4 @@ import java.util.Calendar;
  */
 public class DomainUtil {
 
-    public static String getFormattedStringDate(Calendar calendar) {
-        return new SimpleDateFormat("dd/MM/yyyy").format(calendar.getTime());
-    }
 }

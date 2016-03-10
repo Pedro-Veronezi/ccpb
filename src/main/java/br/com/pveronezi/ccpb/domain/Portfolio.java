@@ -1,5 +1,6 @@
 package br.com.pveronezi.ccpb.domain;
 
+import br.com.pveronezi.ccpb.domain.enumeration.TheologicalTrainingType;
 import br.com.pveronezi.ccpb.domain.enumeration.VocationalAreaType;
 
 import java.util.Calendar;
@@ -28,6 +29,9 @@ public class Portfolio {
     }
 
     public boolean isParticipatedConhecendoComuna() {
+        return participatedConhecendoComuna;
+    }
+    public boolean getParticipatedConhecendoComuna() {
         return participatedConhecendoComuna;
     }
 

@@ -12,8 +12,7 @@ public enum FunctionType {
         value = s;
     }
 
-    @Override
-    public String toString() {
+    public String getValue() {
         return value;
     }
 }

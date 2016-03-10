@@ -2,51 +2,155 @@
 <html layout:decorator="layout/layout" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
-    <title layout:fragment="title" >Users</title>
+    <title layout:fragment="title">Users</title>
+
 </head>
 
 <body>
 <div id="main" layout:fragment="content">
-    <a class="btn btn-primary btn-sm"  th:href="@{new}" >Adicionar</a>
-    <table class="table table-striped table-bordered">
-        <caption class="text-center lead" >Add Title</caption>
+    <a class="btn btn-primary btn-sm" th:href="@{new}">Adicionar</a>
+    <table class="table_presentation">
+        <caption class="text-center lead">Add Title</caption>
         <thead>
         <tr>
-            <th scope="col" >Nome</th>
-            <th scope="col" >Valor</th>
-            <th scope="col" >Nome</th>
-            <th scope="col" >Valor</th>
+            <th class="title" scope="col">Nome</th>
+            <th scope="col">Valor</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="member : ${members}">
 
         <tr>
-            <td >Id</td>
-            <td th:text="${member.id}">Id</td></tr>
-        <tr><td >Name</td> <td th:text="${member.name}">Name</td></tr>
-        <tr><td >Nascimento</td> <td th:text="${member.formattedBirthday}">Nascimento</td></tr>
-        <tr><td >Estado civil</td> <td th:text="${member.maritalStatus}"></td></tr>
-        <tr><td >Data de admissão</td> <td th:text="${member.formattedDateAdmission}"></td></tr>
-        <tr><td >Admitido por</td> <td th:text="${member.admittedFor}"></td></tr>
-        <tr><td >Batizado</td> <td th:text="${member.baptized}"></td></tr>
-        <tr><td >Igreja de batismo</td> <td th:text="${member.churchBaptized}"></td></tr>
-        <tr><td >Ultima igreja</td> <td th:text="${member.lastChurch}"></td></tr>
-        <tr><td >Função</td> <td th:text="${member.function}"></td></tr>
-        <tr><td >Email</td> <td th:text="${member.email}"></td></tr>
-        <tr><td >Foto</td> <td th:text="${member.photo}"></td></tr>
-        <tr><td >Endereço</td> <td th:text="${member.address.street} + ', ' + ${member.address.number}"></td></tr>
-        <tr><td >Telefone</td> <td th:text="${member.phoneNumber.ddd} + ', ' + ${member.phoneNumber.number}"></td></tr>
-        <tr><td >Profissão</td> <td th:text="${member.portfolio.profession}"></td></tr>
-        <tr><td >RG</td> <td th:text="${member.identification.rg}"></td></tr>
+            <td class="title">Id:</td>
+            <td th:text="${member.id}">Id</td>
+        </tr>
+        <tr>
+            <td class="title">Name:</td>
+            <td th:text="${member.name}">Name</td>
+        </tr>
+        <tr>
+            <td class="title">Nascimento:</td>
+            <td th:text="${#dates.format(member.birthday, 'dd/MMM/yyyy')}">Nascimento</td>
+        </tr>
+        <tr>
+            <td class="title">Estado civil:</td>
+            <td th:text="${member.maritalStatus.value}"></td>
+        </tr>
+        <tr>
+            <td class="title">Data de admissão:</td>
+            <td th:text="${#dates.format(member.dateAdmission, 'dd/MMM/yyyy')}">Nascimento</td>
+        </tr>
+        <tr>
+            <td class="title">Admitido por:</td>
+            <td th:text="${member.admittedFor.value}"></td>
+        </tr>
+        <tr>
+            <td class="title">Batizado:</td>
+            <td th:text="${member.baptized} ? 'Sim' : 'Não'"></td>
+        </tr>
+        <tr>
+            <td class="title">Igreja de batismo:</td>
+            <td th:text="${member.churchBaptized}"></td>
+        </tr>
+        <tr>
+            <td class="title">Ultima igreja:</td>
+            <td th:text="${member.lastChurch}"></td>
+        </tr>
+        <tr>
+            <td class="title">Função:</td>
+            <td th:text="${member.function}"></td>
+        </tr>
+        <tr>
+            <td class="title">Email:</td>
+            <td th:text="${member.email}"></td>
+        </tr>
+        <tr>
+            <td class="title">Foto:</td>
+            <td th:text="${member.photo}"></td>
+        </tr>
+        <!--Endereço-->
+        <tr>
+            <td class="title">Endereço:</td>
+            <td th:text="${member.address.street} + ', ' + ${member.address.number}+ ', ' + ${member.address.complement}"></td>
+        </tr>
+        <tr>
+            <td class="title">Bairro:</td>
+            <td th:text="${member.address.neghborhood}"></td>
+        </tr>
+        <tr>
+            <td class="title">Local:</td>
+            <td th:text="${member.address.city}+', '+${member.address.state}"></td>
+        </tr>
+        <tr>
+            <td class="title">CEP:</td>
+            <td th:text="${member.address.zipCode}"></td>
+        </tr>
+        <!--Telefone-->
+        <tr>
+            <td class="title">Telefone:</td>
+            <td th:text="'('+${member.phoneNumber.ddd} +')'+ ${member.phoneNumber.number}"></td>
+        </tr>
+        <tr>
+            <td class="title">Ramal:</td>
+            <td th:text="${member.phoneNumber.extensionLine}"></td>
+        </tr>
+        <tr>
+            <td class="title">Tipo:</td>
+            <td th:text="${member.phoneNumber.type.value}"></td>
+        </tr>
+        <!--Portfolio-->
+        <tr>
+            <td class="title">Profissão:</td>
+            <td th:text="${member.portfolio.profession}"></td>
+        </tr>
+        <tr>
+            <td class="title">Participou do Conhecendo a Comuna:</td>
+            <td th:text="${member.portfolio.participatedConhecendoComuna}? 'Sim' : 'Não'"></td>
+        </tr>
+        <tr>
+            <td class="title">Data de Batismo:</td>
+            <td th:text="${#dates.format(member.portfolio.baptismDate, 'dd/MMM/yyyy')}">Nascimento</td>
+        </tr>
+        <tr>
+            <td class="title">Historico:</td>
+            <td th:text="${member.portfolio.historic}"></td>
+        </tr>
+        <tr>
+            <td class="title">Formação Teologica:</td>
+            <td th:text="${member.portfolio.theologicalTraining.value}"></td>
+        </tr>
+        <tr>
+            <td class="title">Area de vocação:</td>
+            <td th:text="${member.portfolio.vocationalArea.value}"></td>
+        </tr>
+        <!--Identificação-->
+        <tr>
+            <td class="title">RG:</td>
+            <td th:text="${member.identification.rg}+', '+${member.identification.rgDispatcher}"></td>
+        </tr>
+        <tr>
+            <td class="title">Natural de:</td>
+            <td th:text="${member.identification.bornCity}+', '+${member.identification.bornState}"></td>
+        </tr>
+        <tr>
+            <td class="title">Nome do Pai:</td>
+            <td th:text="${member.identification.fatherName}"></td>
+        </tr>
+        <tr>
+            <td class="title">Nome da Mãe:</td>
+            <td th:text="${member.identification.matherName}"></td>
+        </tr>
 
-
-            <td> <a class="btn btn-primary btn-sm"  th:href="@{edit/} + ${member.id}" >Editar</a>
-                <a class="btn btn-primary btn-sm"  th:href="@{delete/} + ${member.id}" >Remover</a>
-            </td>
+        <td class="title">
+            <a class="btn btn-primary btn-sm" th:href="@{edit/} + ${member.id}">Editar</a>
+        </td>
+        <td>
+            <a class="btn btn-primary btn-sm" th:href="@{delete/} + ${member.id}">Remover</a>
+        </td>
         </tr>
         </tbody>
     </table>
+
 </div>
 </body>
 </html>
