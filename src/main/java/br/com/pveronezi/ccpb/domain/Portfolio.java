@@ -3,12 +3,22 @@ package br.com.pveronezi.ccpb.domain;
 import br.com.pveronezi.ccpb.domain.enumeration.TheologicalTrainingType;
 import br.com.pveronezi.ccpb.domain.enumeration.VocationalAreaType;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.util.Calendar;
 
 /**
  * Created by pveronezi on 22/12/15.
  */
+@Entity
 public class Portfolio {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+
     private boolean participatedConhecendoComuna;
     private Calendar baptismDate;
     private String historic;

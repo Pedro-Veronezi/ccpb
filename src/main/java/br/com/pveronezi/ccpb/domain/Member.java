@@ -30,18 +30,18 @@ public class Member {
     private String email;
     private byte[] photo;
 
-    @OneToOne
-    private Address address = new Address.Builder().build();
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Address address;
 
     //TODO refatorar para uma lista
-    @OneToOne
-    private PhoneNumber phoneNumber = new PhoneNumber.Builder().build();
+    @OneToOne(cascade = {CascadeType.ALL})
+    private PhoneNumber phoneNumber;
 
-    @OneToOne
-    private Portfolio portfolio = new Portfolio.Builder().build();
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Portfolio portfolio;
 
-    @OneToOne
-    private Identification identification = new Identification.Builder().build();
+    @OneToOne(cascade = {CascadeType.ALL})
+    private Identification identification;
 
     public Member() {
     }

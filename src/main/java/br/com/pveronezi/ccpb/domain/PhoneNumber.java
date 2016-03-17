@@ -2,10 +2,21 @@ package br.com.pveronezi.ccpb.domain;
 
 import br.com.pveronezi.ccpb.domain.enumeration.PhoneType;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by pveronezi on 22/12/15.
  */
+@Entity
 public class PhoneNumber {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
+
     private long number;
     private int ddd;
     private int extensionLine;
