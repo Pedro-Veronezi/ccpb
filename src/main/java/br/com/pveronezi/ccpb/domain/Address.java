@@ -1,10 +1,17 @@
 package br.com.pveronezi.ccpb.domain;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by pveronezi on 17/12/15.
  */
 public class Address {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private long id;
     private String street;
     private int number;
     private String complement;

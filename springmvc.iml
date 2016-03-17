@@ -78,5 +78,6 @@
     <orderEntry type="library" exported="" name="Gradle: org.mongodb:mongo-java-driver:2.13.0" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.slf4j:slf4j-api:1.7.13" level="project" />
     <orderEntry type="library" exported="" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.13" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
   </component>
 </module>

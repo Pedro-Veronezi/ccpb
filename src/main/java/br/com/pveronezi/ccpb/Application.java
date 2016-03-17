@@ -9,12 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.Calendar;
 
 @SpringBootApplication
-@EnableMongoRepositories
 public class Application extends SpringBootServletInitializer implements CommandLineRunner {
 
     @Autowired

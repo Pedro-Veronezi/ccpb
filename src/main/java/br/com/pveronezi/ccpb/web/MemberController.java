@@ -50,7 +50,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-    public String updateMember(@PathVariable("id") String memberId, Model model) {
+    public String updateMember(@PathVariable("id") long memberId, Model model) {
         System.out.println("updateMember GET - start");
         Member member = memberService.get(memberId);
 
@@ -101,7 +101,7 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-    public String removeMember(@PathVariable("id") String memberId, Model model) {
+    public String removeMember(@PathVariable("id") long memberId, Model model) {
         System.out.println("removeMember - start");
         //todo simplificar para o service receber o id para remover.
         Member member = memberService.get(memberId);

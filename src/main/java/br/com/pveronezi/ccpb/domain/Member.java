@@ -6,17 +6,18 @@ package br.com.pveronezi.ccpb.domain;
 
 import br.com.pveronezi.ccpb.domain.enumeration.AdmittedType;
 import br.com.pveronezi.ccpb.domain.enumeration.FunctionType;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 
 import java.util.Arrays;
 import java.util.Calendar;
 
-@Document
+@Entity
 public class Member {
+
     @Id
-    private String id;
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private long id;
     private String name;
     private Calendar birthday;
     private MaritalStatus maritalStatus;
@@ -28,9 +29,18 @@ public class Member {
     private FunctionType function;
     private String email;
     private byte[] photo;
+
+    @OneToOne
     private Address address = new Address.Builder().build();
+
+    //TODO refatorar para uma lista
+    @OneToOne
     private PhoneNumber phoneNumber = new PhoneNumber.Builder().build();
+
+    @OneToOne
     private Portfolio portfolio = new Portfolio.Builder().build();
+
+    @OneToOne
     private Identification identification = new Identification.Builder().build();
 
     public Member() {
@@ -55,11 +65,11 @@ public class Member {
         identification = builder.identification;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -183,7 +193,7 @@ public class Member {
     }
 
     public static final class Builder {
-        private String id;
+        private long id;
         private String name;
         private Calendar birthday;
         private MaritalStatus maritalStatus;
@@ -203,7 +213,7 @@ public class Member {
         public Builder() {
         }
 
-        public Builder id(String val) {
+        public Builder id(long val) {
             id = val;
             return this;
         }
