@@ -31,7 +31,7 @@ public class Application extends SpringBootServletInitializer implements Command
     @Override
     public void run(String... args) throws Exception {
 
-        //TODO para testes
+      /*  //TODO para testes
         System.out.println("-------------TESTE-------------");
         memberService.cleanDb();
         for (int i = 1; i < 10; i++) {
@@ -86,6 +86,6 @@ public class Application extends SpringBootServletInitializer implements Command
 
             memberService.insert(m);
         }
-
+*/
     }
 }
